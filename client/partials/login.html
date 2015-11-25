@@ -1,0 +1,8 @@
+<title>Login</title>
+	<div ng-controller='LoginController'>
+		<form name='login' novalidate>
+			<p>Your Name: <input type="text" ng-model="newUser.name" ng-minlength="1" ng-required="true"></p>
+			<input type="submit" value="Login" ng-click="addUser()" ng-disabled="login.$invalid">
+		</form>
+			<p ng-if="login.$invalid">You must enter a name</p>
+    </div>

@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="container">
+		<div ng-controller="ForecastController">
+			<h1>What date would you like a forecast for?</h1>
+			<form name='form'>
+				<p><b>Insert date in the following format: </b>2013-05-06T12:00:00-0400</p>
+				<div>Date: <input type='text' ng-model='newDateForecast.date' ng-required="true" placeholder="2013-05-06T12:00:00-0400"></div><br>
+				<input type='submit' value="Get Forecast" ng-click="addDate(newDateForecast)" class="btn btn-primary">
+			</form>
+
+			<br><br>
+
+			<h1>Forecast Results</h1>
+			<table class="table table-striped">
+	            <tr>
+	              <th>City</th>
+	              <th>Forecast Information</th>
+	            </tr>
+	            <tr ng-repeat='one in oneResult'>
+            	<!-- forecast.io does not provide city name with their JSON object -->
+            	<!-- find a service that can take lat and long -->
+           	    <!-- used ng-if statements to show city names -->
+	           	  <td ng-if="one.latitude == 47.6000"><b>Bellevue, WA</b></a></td>
+	           	  <td ng-if="one.latitude == 47.6097"><b>Seattle, WA</b></a></td>
+	           	  <td ng-if="one.latitude == 47.5775"><b>Mercer Island, WA</b></a></td>
+	              <td>
+		              <p>Summary: <span ng-bind='one.currently.summary'></p>
+		              <p>Humdity: <span ng-bind= 'one.currently.humidity'>%</span></p> 
+		              <p>Apparent Temperature: <span ng-bind='one.currently.apparentTemperature'> °F</p>
+		              <p>Precipitation Probability: <span ng-bind='one.currently.precipProbability'> %</p>
+		              <p>Windspeed: <span ng-bind='one.currently.windSpeed'> mph</p>
+	          	  </td>
+	            </tr>
+	          </table>
+		</div>
+	</div>
+</body>
+</html>

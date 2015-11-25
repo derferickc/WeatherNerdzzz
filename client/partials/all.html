@@ -1,0 +1,102 @@
+<html>
+<head>
+	<title>Seven Day Forecast</title>
+</head>
+<body>
+    <div ng-controller="ForecastController">
+	  <div class='container'>
+	  	<h1>Seven Day Forecast</h1>
+	      <p>Select the name of a city to get detailed report</p>
+	      <div class='row'>
+	          <table class="table table-striped">
+	            <tr>
+	              <th>City, State</th>
+	              <th>Today</th>
+	              <th>Tomorrow</th> 
+	              <th>3 days from now</th>
+	              <th>4 days from now</th>
+	              <th>5 days from now</th>
+	              <th>6 days from now</th>
+	              <th>7 days from now</th>
+	              <th>8 days from now</th>
+	            </tr>
+
+	            <tr ng-repeat='a in all'>
+            	<!-- forecast.io does not provide city name with their JSON object -->
+            	<!-- find a service that can take lat and long -->
+           	    <!-- used ng-if statements to show city names -->
+	           	  <td ng-if="a.latitude == 47.6000"><a href="#/one/{{ a.latitude }}/{{ a.longitude }}">Bellevue, WA</a></td>
+	           	  <td ng-if="a.latitude == 47.6097"><a href="#/one/{{ a.latitude }}/{{ a.longitude }}">Seattle, WA</a></td>
+	           	  <td ng-if="a.latitude == 47.5775"><a href="#/one/{{ a.latitude }}/{{ a.longitude }}">Mercer Island, WA</a></td>
+	              <!-- ideally i would use another ng-repeat within the <td> tag, but ran out of time -->
+	              <td>
+		              <p><b>Summary: </b> <span ng-bind='a.daily.data[0].summary'></p>
+		              <p><b>Humidity: </b> <span ng-bind= 'a.daily.data[0].humidity'></span> %</p> 
+		              <p><b>Apparent Temp Max: </b> <span ng-bind='a.daily.data[0].apparentTemperatureMax'></span> °F</p>
+		              <p><b>Apparent Temp Min: </b> <span ng-bind='a.daily.data[0].apparentTemperatureMin'></span> °F</p>
+		              <p><b>Precip Probability: </b><span ng-bind='a.daily.data[0].precipProbability'></span> %</p>
+		              <p><b>Windspeed: </b><span ng-bind='a.daily.data[0].windSpeed'></span> mph</p>
+	          	  </td>
+	          	  <td>
+		              <p><b>Summary: </b> <span ng-bind='a.daily.data[1].summary'></p>
+		              <p><b>Humidity: </b> <span ng-bind= 'a.daily.data[1].humidity'></span> %</p> 
+		              <p><b>Apparent Temp Max: </b> <span ng-bind='a.daily.data[1].apparentTemperatureMax'></span> °F</p>
+		              <p><b>Apparent Temp Min: </b> <span ng-bind='a.daily.data[1].apparentTemperatureMin'></span> °F</p>
+		              <p><b>Precip Probability: </b><span ng-bind='a.daily.data[1].precipProbability'></span> %</p>
+		              <p><b>Windspeed: </b><span ng-bind='a.daily.data[1].windSpeed'></span> mph</p>
+	          	  </td>
+	          	  <td>
+		              <p><b>Summary: </b> <span ng-bind='a.daily.data[2].summary'></p>
+		              <p><b>Humidity: </b> <span ng-bind= 'a.daily.data[2].humidity'></span> %</p> 
+		              <p><b>Apparent Temp Max: </b> <span ng-bind='a.daily.data[2].apparentTemperatureMax'></span> °F</p>
+		              <p><b>Apparent Temp Min: </b> <span ng-bind='a.daily.data[2].apparentTemperatureMin'></span> °F</p>
+		              <p><b>Precip Probability: </b><span ng-bind='a.daily.data[2].precipProbability'></span> %</p>
+		              <p><b>Windspeed: </b><span ng-bind='a.daily.data[2].windSpeed'></span> mph</p>
+	          	  </td>
+	          	  <td>
+		              <p><b>Summary: </b> <span ng-bind='a.daily.data[3].summary'></p>
+		              <p><b>Humidity: </b> <span ng-bind= 'a.daily.data[3].humidity'></span> %</p> 
+		              <p><b>Apparent Temp Max: </b> <span ng-bind='a.daily.data[3].apparentTemperatureMax'></span> °F</p>
+		              <p><b>Apparent Temp Min: </b> <span ng-bind='a.daily.data[3].apparentTemperatureMin'></span> °F</p>
+		              <p><b>Precip Probability: </b><span ng-bind='a.daily.data[3].precipProbability'></span> %</p>
+		              <p><b>Windspeed: </b><span ng-bind='a.daily.data[3].windSpeed'></span> mph</p>
+	          	  </td>
+	          	  <td>
+		              <p><b>Summary: </b> <span ng-bind='a.daily.data[4].summary'></p>
+		              <p><b>Humidity: </b> <span ng-bind= 'a.daily.data[4].humidity'></span> %</p> 
+		              <p><b>Apparent Temp Max: </b> <span ng-bind='a.daily.data[4].apparentTemperatureMax'></span> °F</p>
+		              <p><b>Apparent Temp Min: </b> <span ng-bind='a.daily.data[4].apparentTemperatureMin'></span> °F</p>
+		              <p><b>Precip Probability: </b><span ng-bind='a.daily.data[4].precipProbability'></span> %</p>
+		              <p><b>Windspeed: </b><span ng-bind='a.daily.data[4].windSpeed'></span> mph</p>
+	          	  </td>
+	          	  <td>
+		              <p><b>Summary: </b> <span ng-bind='a.daily.data[5].summary'></p>
+		              <p><b>Humidity: </b> <span ng-bind= 'a.daily.data[5].humidity'></span> %</p> 
+		              <p><b>Apparent Temp Max: </b> <span ng-bind='a.daily.data[5].apparentTemperatureMax'></span> °F</p>
+		              <p><b>Apparent Temp Min: </b> <span ng-bind='a.daily.data[5].apparentTemperatureMin'></span> °F</p>
+		              <p><b>Precip Probability: </b><span ng-bind='a.daily.data[5].precipProbability'></span> %</p>
+		              <p><b>Windspeed: </b><span ng-bind='a.daily.data[5].windSpeed'></span> mph</p>
+	          	  </td>
+	          	  <td>
+		              <p><b>Summary: </b> <span ng-bind='a.daily.data[6].summary'></p>
+		              <p><b>Humidity: </b> <span ng-bind= 'a.daily.data[6].humidity'></span> %</p> 
+		              <p><b>Apparent Temp Max: </b> <span ng-bind='a.daily.data[6].apparentTemperatureMax'></span> °F</p>
+		              <p><b>Apparent Temp Min: </b> <span ng-bind='a.daily.data[6].apparentTemperatureMin'></span> °F</p>
+		              <p><b>Precip Probability: </b><span ng-bind='a.daily.data[6].precipProbability'></span> %</p>
+		              <p><b>Windspeed: </b><span ng-bind='a.daily.data[6].windSpeed'></span> mph</p>
+	          	  </td>
+	          	  <td>
+		              <p><b>Summary: </b> <span ng-bind='a.daily.data[7].summary'></p>
+		              <p><b>Humidity: </b> <span ng-bind= 'a.daily.data[7].humidity'></span> %</p> 
+		              <p><b>Apparent Temp Max: </b> <span ng-bind='a.daily.data[7].apparentTemperatureMax'></span> °F</p>
+		              <p><b>Apparent Temp Min: </b> <span ng-bind='a.daily.data[7].apparentTemperatureMin'></span> °F</p>
+		              <p><b>Precip Probability: </b><span ng-bind='a.daily.data[7].precipProbability'></span> %</p>
+		              <p><b>Windspeed: </b><span ng-bind='a.daily.data[7].windSpeed'></span> mph</p>
+	          	  </td>
+	            </tr>
+	          </table>
+	        </div>
+	    </div>
+	</div>
+</body>
+</html>

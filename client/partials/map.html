@@ -1,0 +1,46 @@
+<html>
+<head>
+  <title>WeatherNerdzzz</title>
+</head>
+<body>
+  <div ng-controller="MapController">
+    <div class='container'>
+      <h1>Current Weather Conditions</h1>
+      <table class="table table-striped">
+        <tr>
+          <th>City, State</th>
+          <th>Summary</th>
+          <th>Humidity</th> 
+          <th>Apparent Temperature</th>
+          <th>Chance for Precipitation</th>
+          <th>Windspeed</th>
+        </tr>
+        <tr ng-repeat='a in all'>
+        <!-- forecast.io does not provide city name with their JSON object -->
+        <!-- find a service that can take lat and long -->
+          <td ng-if="a.latitude == 47.6000"><a href="#/one/{{ a.latitude }}/{{ a.longitude }}">Bellevue, WA</a></td>
+          <td ng-if="a.latitude == 47.6097"><a href="#/one/{{ a.latitude }}/{{ a.longitude }}">Seattle, WA</a></td>
+          <td ng-if="a.latitude == 47.5775"><a href="#/one/{{ a.latitude }}/{{ a.longitude }}">Mercer Island, WA</a></td>
+          <!-- used ng-if statements to show city names -->
+          <td><span ng-bind='a.currently.summary'></span></td>
+          <td><span ng-bind= 'a.currently.humidity'></span> %</td> 
+          <td><span ng-bind='a.currently.apparentTemperature'></span> °F</td>
+          <td><span ng-bind='a.currently.precipProbability'></span> %</td>
+          <td><span ng-bind='a.currently.windSpeed'></span> mph</td>
+        </tr>
+      </table>
+      <div class='row'>
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' options="map.options">
+          <ui-gmap-markers 
+            models="markers" 
+            idkey="markers.id" 
+            coords="'coords'" 
+            icon="'icon'" 
+            click="click()">
+          </ui-gmap-markers>
+      </div>
+    </div>
+</div>
+</body>
+</html>
+

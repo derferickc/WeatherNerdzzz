@@ -1,0 +1,9 @@
+{
+ 	"name": "Angular_Google_Maps",
+	"version": "0.0.1",
+	"dependencies": {
+	    "express": "~4.2.0",
+	    "body-parser": "latest",
+	    "express-session": "^1.11.3"
+  	}
+}

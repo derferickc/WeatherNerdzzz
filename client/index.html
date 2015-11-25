@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html ng-app='weatherNerdzzz'>
+<head>
+	<title>WeatherNerdzzz</title>
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+	</style>
+    <!-- angular and jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-route.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- routing rules for partials -->
+    <script type="text/javascript" src="/javascript/routes/config.js"></script>
+    <!-- partial factory -->
+	<script type="text/javascript" src="/javascript/factories/forecast_factory.js"></script>
+	<script type="text/javascript" src="/javascript/factories/map_factory.js"></script>
+    <script type="text/javascript" src="/javascript/factories/user_factory.js"></script>
+    <!-- partial controller -->
+	<script type="text/javascript" src="/javascript/controllers/forecast_controller.js"></script>
+	<script type="text/javascript" src="/javascript/controllers/map_controller.js"></script>
+    <script type="text/javascript" src="/javascript/controllers/user_controller.js"></script>
+    <!-- google maps -->
+    <script type="text/javascript" src="/javascript/map/lodash.js"></script>
+    <script type="text/javascript" src="/javascript/map/angular-google-maps.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyDrosyiujRwCaCxmqPEpxqxL2y9TDA1pAc"></script>
+</head>
+<body ng-controller="UserController">
+	<nav class="navbar navbar-default">
+    	<div class="container">
+    		<!-- Brand and toggle get grouped for better mobile display -->
+    		<div class="navbar-header">
+    			<a class="navbar-brand" href="/">WeatherNerdzzz</a>
+    		</div>
+    		<!-- Collect the nav links, forms, and other content for toggling -->
+    		<div class="collapse navbar-collapse">
+    			<ul class="nav navbar-nav navbar-right">
+                    <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Map</a></li>
+    				<li><a href="#/all"><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> Seven Day Forecast</a></li>
+                    <li ng-if="!sessionID" class="dropdown">
+                        <a href="#/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign in <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                               <form>
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" ng-model="user.email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" ng-model="user.password">
+                                    </div>
+                                    <button type="submit" class="btn btn-success pull-right" ng-click="loginUser(user)">Login</button>
+                                </form>
+                                <form><a href='#/registration'><button type="button" class="btn btn-primary">Sign up</button></a></form>
+                            </li>  
+                        </ul>
+                    </li>
+    			</ul>
+    		</div><!-- /.navbar-collapse -->
+    	</div><!-- /.container-fluid -->
+    </nav>
+	<div ng-view=""></div>
+</body>
+</html>
